@@ -1,18 +1,21 @@
-<h2>{{army.name | uppercase }} Details</h2>
-<div><span>id: </span>{{army.id}}</div>
-<div><span>Battle Factor (BF): </span>{{army.battleFactor}}</div>
-<div>
-    <label for="name">Army name: </label>
-    <input id="name" [(ngModel)]="army.name" placeholder="name">
-</div>
-
 <h2>Army Roster</h2>
 <ul class="armies">
-  <li *ngFor="let army of armies">
-    <button type="button">
+  <li *ngFor="let army of armies" (click)="onSelect(army)">
+    <button type="button" [class.selected]="army === selectedArmy">
       <span class="badge">{{army.id}}</span>
       <span class="name">{{army.name}}</span>
       <span class="battleFactor">{{army.battleFactor}}</span>
     </button>
   </li>
 </ul>
+
+
+<div *ngIf="selectedArmy">
+    <h2>{{selectedArmy.name | uppercase}} Details</h2>
+    <div>id: {{selectedArmy.id}}</div>
+    <div>BF: {{selectedArmy.battleFactor}}</div>
+    <div>
+      <label for="army-name">Army name: </label>
+      <input id="army-name" [(ngModel)]="selectedArmy.name" placeholder="name">
+    </div>
+  </div>
