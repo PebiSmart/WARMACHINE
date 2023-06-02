@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Army } from 'src/army';
+import { ARMIES } from '../mock-armies';
 
 @Component({
   selector: 'app-armies',
@@ -8,10 +9,18 @@ import { Army } from 'src/army';
 })
 export class ArmiesComponent {
 
-army : Army = {
-  id: 1,
-  name: 'test army',
-  battleFactor: 100,
+  selectedArmy? : Army;
+
+  onSelect(army: Army): void {
+    this.selectedArmy = army
 }
+
+  armies = ARMIES;
+
+  army : Army = {
+    id: 1,
+    name: 'test army',
+    battleFactor: 100,
+  }
 
 }

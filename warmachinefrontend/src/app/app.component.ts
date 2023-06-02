@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Army } from 'src/army';
 
 @Component({
   selector: 'app-root',
